@@ -1,11 +1,12 @@
-from asyncio import exceptions
 from typing import Optional
 
-from auth.database_db import User, get_user_db
+from auth.models import User
+from auth.utils import get_user_db
 from fastapi import Depends, Request
-from fastapi_users import BaseUserManager, IntegerIDMixin, models, schemas
+from fastapi_users import BaseUserManager, IntegerIDMixin, models, schemas, exceptions
+from config import SECRET
 
-SECRET = "SECRET" # для сброса пароля
+# SECRET = "SECRET" # для сброса пароля
 
 
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
